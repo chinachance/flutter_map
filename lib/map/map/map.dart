@@ -2,11 +2,11 @@ import 'dart:async';
 import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
-import 'package:flutter_map/flutter_map.dart';
-import 'package:flutter_map/src/core/bounds.dart';
-import 'package:flutter_map/src/core/center_zoom.dart';
-import 'package:flutter_map/src/core/point.dart';
-import 'package:flutter_map/src/map/map_state_widget.dart';
+import 'package:flutter_seamap/map/flutter_map.dart';
+import 'package:flutter_seamap/map/core/bounds.dart';
+import 'package:flutter_seamap/map/core/center_zoom.dart';
+import 'package:flutter_seamap/map/core/point.dart';
+import 'package:flutter_seamap/map/map/map_state_widget.dart';
 import 'package:latlong2/latlong.dart';
 
 class MapControllerImpl implements MapController {

@@ -1,7 +1,8 @@
 import 'dart:io';
 
 import 'package:flutter/widgets.dart';
-import 'package:flutter_map/flutter_map.dart';
+import 'package:flutter_seamap/map/flutter_map.dart';
+import 'package:flutter_seamap/map/layer/tile_layer.dart';
 
 import 'network_image_with_retry.dart';
 

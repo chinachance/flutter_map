@@ -1,8 +1,9 @@
 import 'dart:ui';
 
 import 'package:flutter/widgets.dart';
-import 'package:flutter_map/flutter_map.dart';
-import 'package:flutter_map/src/map/map.dart';
+import 'package:flutter_seamap/map/flutter_map.dart';
+import 'package:flutter_seamap/map/layer/layer.dart';
+import 'package:flutter_seamap/map/map/map.dart';
 import 'package:latlong2/latlong.dart' hide Path;
 
 class CircleLayerOptions extends LayerOptions {

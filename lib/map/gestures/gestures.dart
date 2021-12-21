@@ -5,10 +5,10 @@ import 'dart:math';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/physics.dart';
-import 'package:flutter_map/flutter_map.dart';
-import 'package:flutter_map/src/gestures/interactive_flag.dart';
-import 'package:flutter_map/src/gestures/latlng_tween.dart';
-import 'package:flutter_map/src/map/map.dart';
+import 'package:flutter_seamap/map/flutter_map.dart';
+import 'package:flutter_seamap/map/gestures/interactive_flag.dart';
+import 'package:flutter_seamap/map/gestures/latlng_tween.dart';
+import 'package:flutter_seamap/map/map/map.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:positioned_tap_detector_2/positioned_tap_detector_2.dart';
 

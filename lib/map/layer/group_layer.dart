@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart';
-import 'package:flutter_map/flutter_map.dart';
-import 'package:flutter_map/src/map/map.dart';
+import 'package:flutter_seamap/map/flutter_map.dart';
+import 'package:flutter_seamap/map/map/map.dart';
 
 /// [LayerOptions] that describe a layer composed by multiple built-in layers.
 class GroupLayerOptions extends LayerOptions {
