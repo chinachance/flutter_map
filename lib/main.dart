@@ -1,3 +1,6 @@
+import 'dart:convert';
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_seamap/map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
@@ -36,6 +39,13 @@ class _MyHomePageState extends State<MyHomePage> {
   String sea_map_url =
       'http://m12.shipxy.com/tile.c?l=Na&m=o&x={x}&y={y}&z={z}.png';
   bool change_url = false;
+  List<Marker> allMarkers = [];
+  List<Marker> markers = [];
+
+  @override
+  void initState() {
+    request();
+  }
 
   void _changeMap() {
     setState(() {
@@ -43,22 +53,45 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
+  Future<void> request() async {
+    var httpClient = new HttpClient();
+    var uri = Uri.parse(
+        "https://www.lanshuimu.com/test_gis/gis/webgis-v1/ship//queryShipPositions?hsjgDm=060900");
+    var request = await httpClient.getUrl(uri);
+    var response = await request.close();
+    var responseBody = await response.transform(utf8.decoder).join();
+    var data = jsonDecode(responseBody);
+    List<Map<String, dynamic>> listMap =
+        new List<Map<String, dynamic>>.from(data);
+    print(listMap.toString());
+
+    listMap.forEach((m) => allMarkers.add(Marker(
+        width: 5,
+        height: 5,
+        point: LatLng(m['lat'], m['lon']),
+        builder: (ctx) => Container(
+              child: Container(
+                width: 5,
+                height: 5,
+                color: Colors.red,
+              ),
+            ))));
+
+    setState(() {
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-
-    var markers = <Marker>[
-      Marker(
-        width: 20,
-        height: 35,
-        point: LatLng(30.3638, 120.852965),
-        builder: (ctx) =>
-            Container(
-              child: Image(
-                image: AssetImage("assets/images/ic_map_board_member.png"),
-              ),
-            )
-      )
-    ];
+    // allMarkers.add(Marker(
+    //     width: 20,
+    //     height: 35,
+    //     point: LatLng(30.3638, 120.852965),
+    //     builder: (ctx) => Container(
+    //           child: Image(
+    //             image: AssetImage("assets/images/ic_map_board_member.png"),
+    //           ),
+    //         )));
     //
     return Scaffold(
         appBar: AppBar(
@@ -85,10 +118,9 @@ class _MyHomePageState extends State<MyHomePage> {
                   subdomains: ['a', 'b', 'c'],
                   tileProvider: NonCachingNetworkTileProvider(),
                 ),
-                MarkerLayerOptions(markers: markers)
+                MarkerLayerOptions(markers: allMarkers)
               ],
             ),
-
             Positioned(
               bottom: 18,
               right: 18,
